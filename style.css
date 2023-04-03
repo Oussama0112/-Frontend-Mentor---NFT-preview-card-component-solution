@@ -1,0 +1,175 @@
+/* my variabels */
+:root{
+    --main-clr:hsl(215, 51%, 70%);
+    --alt-main-clr:hsl(178, 100%, 50%);
+    --main-bg:hsl(217, 54%, 11%);
+    --card-bg:hsl(216, 50%, 16%);
+    --line-clr:hsl(215, 32%, 27%);
+    --border-rad:1.825rem;
+    --main-trans:0.4s
+
+    
+}
+/* the css reset */
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+/*
+  2. Remove default margin
+*/
+* {
+  margin: 0;
+}
+/*
+  3. Allow percentage-based heights in the application
+*/
+html, body {
+  height: 100%;
+}
+/*
+  Typographic tweaks!
+  4. Add accessible line-height
+  5. Improve text rendering
+*/
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Outfit', sans-serif;
+}
+/*
+  6. Improve media defaults
+*/
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+/*
+  7. Remove built-in form typography styles
+*/
+input, button, textarea, select {
+  font: inherit;
+}
+/*
+  8. Avoid text overflows
+*/
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+p{
+    font-size: 18px;
+}
+/* setting up my utilities */
+.grid__box{
+    display: grid;
+    gap: 1rem;
+}
+.grid__center{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+.flex__spaced{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.flex__center{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+/* my custom css */
+main{
+  background-color: var(--main-bg);
+  color: white;
+}
+article{
+  padding: 1.825rem;
+  overflow: hidden;
+  border-radius:var(--border-rad);
+  background: var(--card-bg);
+  max-width: 400px;
+  box-shadow: 0 0 20px var(--main-clr);
+  transition: var(--main-trans);
+}
+article:hover{
+  transform: translatey(-1rem);
+}
+.holder{
+  overflow: hidden;
+  border-radius:var(--border-rad);
+  position: relative;
+}
+.holder::before{
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  background-color:hsl(240deg 54.35% 63.92% / 23.92%);
+  transition: var(--main-trans);
+  opacity: 0;
+}
+.holder::after{
+  content: "";
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  background-image: url('images/icon-view.svg');
+  opacity: 0;
+  transition: var(--main-trans);
+}
+.holder:hover::before,
+.holder:hover::after{
+  opacity: 1;
+}
+article > h1{
+  font-weight: 600;
+  color: var(--alt-main-clr);
+  font-size: 1.825rem;
+}
+article > p{
+  color: var(--main-clr);
+  font-size: 1.325rem;
+}
+
+.price{
+  color: var(--alt-main-clr);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.time{
+  color: var(--main-clr);
+}
+.creater{
+  font-size: 0.9rem;
+  color: var(--main-clr);
+  text-transform: capitalize;
+  font-weight: 600;
+}
+.creater img{
+  width: 40px;
+  border: 1px solid white;
+  border-radius: 50%;
+}
+span{
+  cursor: pointer;
+}
+.creater:hover span{
+  color: var(--alt-main-clr);
+}
+@media (max-width:500px) {
+  article{
+    max-width: 340px;
+  }
+}
